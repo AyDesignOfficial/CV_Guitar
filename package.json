@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "concurrently \"json-server --watch ./_data/db.json --port 4000\" \"next start\"",
-    "lint": "next lint"
+    "start": "next start",
+    "serve-json": "json-server --watch ./_data/db.json --port 4000",
+    "serve": "concurrently \"npm run serve-json\" \"npm start\""
   },
   "dependencies": {
     "framer-motion": "^10.16.4",
