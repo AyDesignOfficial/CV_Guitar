@@ -22,13 +22,13 @@
     "react-type-animation": "^3.1.0",
     "swiper": "^10.3.1",
     "swr": "^2.2.4",
-    "tailwind-scrollbar": "^3.0.5"
+    "tailwind-scrollbar": "^3.0.5",
+    "json-server": "^0.16.3",
+    "concurrently": "^6.2.1"
   },
   "devDependencies": {
     "autoprefixer": "latest",
     "postcss": "latest",
-    "tailwindcss": "latest",
-    "json-server": "^0.16.3",
-    "concurrently": "^6.2.1"
+    "tailwindcss": "latest"
   }
 }
