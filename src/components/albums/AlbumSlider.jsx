@@ -15,14 +15,20 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 
 // fetcher
-const fetcher = (url) => fetch(url).then((res) => res.json());
+const fetcher = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return await res.json();
+};
 
 const AlbumSlider = () => {
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_API_BASE_URL}/albums`, fetcher);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-  if (error) return 'Failed to fetch data';
-  if (!data) return 'Loading...';
+  if (error) return <div>Failed to fetch data</div>;
+  if (!data) return <div>Loading...</div>;
 
   return (
     <>
@@ -160,5 +166,6 @@ const AlbumSlider = () => {
     </>
   );
 };
+
 
 export default AlbumSlider;

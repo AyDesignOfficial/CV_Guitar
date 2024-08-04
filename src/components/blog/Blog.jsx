@@ -2,9 +2,18 @@ import SectionHeader from '../SectionHeader';
 import PostList from './PostList';
 
 const getPosts = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts`);
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/posts`);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await res.json();
+  } catch (error) {
+    console.error('Failed to fetch posts:', error);
+    return [];
+  }
 };
+
 
 const Blog = async () => {
   const posts = await getPosts();

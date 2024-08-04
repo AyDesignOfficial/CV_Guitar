@@ -2,9 +2,18 @@ import EventBox from './EventBox';
 import SectionHeader from '../SectionHeader';
 
 const getEvents = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`);
-  return res.json();
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`);
+    if (!res.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return await res.json();
+  } catch (error) {
+    console.error('Failed to fetch events:', error);
+    return [];
+  }
 };
+
 
 
 const Events = async () => {
