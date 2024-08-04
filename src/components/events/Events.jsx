@@ -2,9 +2,10 @@ import EventBox from './EventBox';
 import SectionHeader from '../SectionHeader';
 
 const getEvents = async () => {
-  const res = await fetch('http://localhost:4000/events');
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/events`);
   return res.json();
 };
+
 
 const Events = async () => {
   const events = await getEvents();
